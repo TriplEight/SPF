@@ -1,14 +1,14 @@
 # 11. Review and Evolution Cycle
 
 > **FPF Reference:** B.4 (Canonical Evolution Loop: Run → Observe → Refine → Deploy)
-> Также: B.5 (Reasoning Cycle: Abduction → Deduction → Induction)
-> Полная спецификация: `~/IWE/FPF/FPF-Spec.md`
+> Also: B.5 (Reasoning Cycle: Abduction → Deduction → Induction)
+> Full specification: `~/IWE/FPF/FPF-Spec.md`
 
 ## Purpose
 
 Establish the ongoing cycle of review and evolution that keeps the pack current. A pack is never "done" — it is a living repository that must be maintained as domain understanding evolves.
 
-**Связь с FPF:** Этот процесс реализует FPF B.4 (Canonical Evolution Loop). Pack проходит циклы: запуск → наблюдение (выявление проблем) → уточнение (изменение) → деплой (публикация). Цикл бесконечен.
+**Relationship to FPF:** This process implements FPF B.4 (Canonical Evolution Loop). The pack goes through cycles: run → observe (identify issues) → refine (make changes) → deploy (publish). The cycle is infinite.
 
 ---
 
@@ -42,7 +42,7 @@ The process diagram loops: Stage 11 returns to earlier stages.
 | Signal | Action |
 |--------|--------|
 | Confusion persists despite distinction | Refine or restate distinction |
-| New failure mode doesn't map to distinction | May need new distinction |
+| New failure mode does not map to distinction | May need new distinction |
 | Distinction rarely referenced | May be unnecessary |
 | Two distinctions overlap | Consolidate or clarify |
 | FPF updates relevant distinction | Align with FPF |
@@ -229,7 +229,7 @@ replacement: PD.METHOD.003
 
 **Problem**: Downstream references break; traceability lost.
 
-**Correction**: Deprecate, don't delete. IDs are forever.
+**Correction**: Deprecate, do not delete. IDs are forever.
 
 ### E4. Change Without Map Update
 
