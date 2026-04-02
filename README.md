@@ -1,56 +1,56 @@
 # SPF — Second Principles Framework
 
-> **Тип репозитория:** `Base/Принципы`
+> **Repository type:** `Base/Principles`
 
-> Фреймворк для формализации вторых принципов предметных областей в инженерное знание.
+> A framework for formalizing second principles of domain areas into engineering knowledge.
 
-## Что это
+## What is this
 
-**SPF (Second Principles Framework)** — это фреймворк требований и процессов, который задаёт, **как вторые принципы** конкретной предметной области могут быть зафиксированы и стабилизированы как **инженерное знание**.
+**SPF (Second Principles Framework)** is a framework of requirements and processes that defines **how second principles** of a specific domain area can be captured and stabilized as **engineering knowledge**.
 
-SPF отвечает на вопрос:
-> Какая форма и какие критерии нужны, чтобы вторые принципы стали проверяемым ядром области?
+SPF answers the question:
+> What form and criteria are needed so that second principles become a verifiable core of the domain?
 
-## Ключевые понятия
+## Key concepts
 
-| Термин | Определение |
-|--------|-------------|
-| **Вторые принципы** | Устойчивые предметные закономерности и различения внутри конкретной области |
-| **Pack (паспорт области)** | Оформленное инженерное ядро области — результат применения SPF |
-| **FPF** | First Principles Framework — мета-онтология и базовые различения, на которых основан SPF |
+| Term | Definition |
+|------|------------|
+| **Second principles** | Stable domain-specific patterns and distinctions within a specific area |
+| **Pack (domain passport)** | Formalized engineering core of a domain — the result of applying SPF |
+| **FPF** | First Principles Framework — meta-ontology and base distinctions on which SPF is built |
 
-## Что SPF задаёт
+## What SPF defines
 
-**Минимальные обязательные элементы инженерного описания области:**
+**Minimum mandatory elements for an engineering description of a domain:**
 
-| Элемент | FPF код | Описание |
-|---------|---------|----------|
-| Bounded context | A.1.1 | Границы области, словарь |
-| Distinctions | A.7 | Ключевые различения |
-| Characteristics | A.17-A.19 | Характеристики и индикаторы |
-| Methods | A.3.1-A.3.2 | Методы оценки/проверки |
-| Work Products | A.15.1 | Рабочие продукты |
-| Failure modes | — | Типовые ошибки интерпретации |
-| SoTA | Part G | Статусы и критерии пересмотра |
+| Element | FPF code | Description |
+|---------|----------|-------------|
+| Bounded context | A.1.1 | Domain boundaries, vocabulary |
+| Distinctions | A.7 | Key distinctions |
+| Characteristics | A.17-A.19 | Characteristics and indicators |
+| Methods | A.3.1-A.3.2 | Assessment/verification methods |
+| Work Products | A.15.1 | Work products |
+| Failure modes | — | Typical interpretation errors |
+| SoTA | Part G | Statuses and revision criteria |
 
-**Требования к структуре:**
-- Правила идентификаторов и ссылок
-- Каноническая структура pack'а
+**Structure requirements:**
+- Identifier and reference rules
+- Canonical pack structure
 
-**Процессные гейты:**
-- Process lint: проверка корректности
-- Контракты между source-of-truth и downstream
+**Process gates:**
+- Process lint: correctness checks
+- Contracts between source-of-truth and downstream
 
-## Структура репозитория
+## Repository structure
 
 ```
 SPF/
-├── README.md              # Этот файл
-├── ontology.md            # Базовая онтология SPF (SPF.SPEC.002)
-├── REPO-TYPE.md           # Тип репозитория
-├── docs/                  # Концептуальная документация
+├── README.md              # This file
+├── ontology.md            # Base SPF ontology (SPF.SPEC.002)
+├── REPO-TYPE.md           # Repository type
+├── docs/                  # Conceptual documentation
 │   └── conceptual-model.md
-├── process/               # Процесс создания pack
+├── process/               # Pack creation process
 │   ├── 00-process-overview.md
 │   ├── 01-domain-selection.md
 │   ├── 02-bounded-context.md
@@ -65,13 +65,13 @@ SPF/
 │   ├── 11-review-and-evolution-cycle.md
 │   ├── material-ingestion-protocol.md
 │   └── process-lint.md
-├── spec/                  # Спецификации
+├── spec/                  # Specifications
 │   ├── ai-view.md
 │   ├── downstream-contract.md
-│   ├── f-g-r-trust.md        # FPF B.3 — опциональный паттерн
+│   ├── f-g-r-trust.md        # FPF B.3 — optional pattern
 │   ├── human-guides.md
 │   └── SPF.SPEC.001-entity-coding.md
-└── pack-template/         # Шаблон структуры pack
+└── pack-template/         # Pack structure template
     ├── 00-pack-manifest.md
     ├── 01-domain-contract/  # + 01C-ontology.md (SPF.SPEC.002)
     ├── 02-domain-entities/
@@ -82,46 +82,46 @@ SPF/
     └── 07-map/
 ```
 
-## Что SPF НЕ делает
+## What SPF does NOT do
 
-- **Не добавляет предметное содержание** — SPF не знает, какие вторые принципы верны в вашей области
-- **Не строит курсы** — обучение это downstream
-- **Не заменяет исследование/экспертизу** — SPF задаёт форму, не содержание
+- **Does not add domain content** — SPF does not know which second principles are valid in your domain
+- **Does not build courses** — training is downstream
+- **Does not replace research/expertise** — SPF defines form, not content
 
-## Иерархия уровней
+## Level hierarchy
 
 ```
-FPF (Level 1)  →  фреймворк первых принципов (мета-онтология + различения)
+FPF (Level 1)  →  first principles framework (meta-ontology + distinctions)
        ↓
-SPF (Level 2)  →  фреймворк вторых принципов (форма + процесс)  ← ВЫ ЗДЕСЬ
+SPF (Level 2)  →  second principles framework (form + process)  ← YOU ARE HERE
        ↓
-Pack           →  формализованное знание конкретной области
+Pack           →  formalized knowledge of a specific domain
        ↓
-Downstream     →  производные представления (курсы, AI-агенты, руководства)
+Downstream     →  derived representations (courses, AI agents, guides)
 ```
 
-## Универсальность SPF
+## SPF universality
 
-SPF **универсален по форме и процессу**, но **не по содержанию**:
-- Структура pack'а одинакова для любых областей
-- Процесс создания знания одинаков
-- Lint и гейты одинаковы
-- Но наполнение pack'а всегда доменно-специфично
+SPF is **universal in form and process**, but **not in content**:
+- Pack structure is the same for any domain
+- Knowledge creation process is the same
+- Lint and gates are the same
+- But pack content is always domain-specific
 
-## Связанные репозитории
+## Related repositories
 
-| Репозиторий | Тип | Роль |
-|-------------|-----|------|
+| Repository | Type | Role |
+|------------|------|------|
 | [ailev/FPF](https://github.com/ailev/FPF) | Framework | First Principles Framework (upstream) |
-| [PACK-digital-platform](https://github.com/TserenTserenov/PACK-digital-platform) | Pack | Область ИТ-платформы |
-| Pack-репозитории (downstream) | Pack | Создаются по SPF |
+| [PACK-digital-platform](https://github.com/TserenTserenov/PACK-digital-platform) | Pack | Digital platform domain |
+| Pack repositories (downstream) | Pack | Created following SPF |
 
-## Как начать создавать pack
+## How to start creating a pack
 
-1. Изучите [концептуальную модель](docs/conceptual-model.md)
-2. Следуйте [процессу](process/README.md)
-3. Используйте [шаблон pack](pack-template/)
-4. Проверяйте [lint](process/process-lint.md)
+1. Study the [conceptual model](docs/conceptual-model.md)
+2. Follow the [process](process/README.md)
+3. Use the [pack template](pack-template/)
+4. Run [lint](process/process-lint.md) checks
 
 ---
 

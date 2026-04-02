@@ -1,8 +1,8 @@
-# Тип репозитория
+# Repository type
 
-**Тип**: `Base/Принципы`
+**Type**: `Base/Principles`
 
-**Source-of-truth**: yes (для требований к форме/процессам pack'ов)
+**Source-of-truth**: yes (for pack form/process requirements)
 
 ## Upstream dependencies
 
@@ -10,20 +10,20 @@
 
 ## Downstream outputs
 
-- Pack-репозитории используют SPF как основу
+- Pack repositories use SPF as their foundation
 
 ## Non-goals
 
-- НЕ содержит предметного знания конкретных областей
-- НЕ является pack'ом
-- НЕ содержит курсов, маршрутов, руководств
-- НЕ содержит кода/сервисов
+- Does NOT contain domain knowledge of specific areas
+- Is NOT a pack
+- Does NOT contain courses, learning paths, or guides
+- Does NOT contain code/services
 
-## Что содержит
+## Contents
 
-- Универсальные требования к pack (структура, обязательные элементы)
-- Шаблоны для pack-репозиториев
-- Process lint (проверки корректности)
-- Правила SoTA-статусов
-- Требования к ID/ссылкам
-- Протокол material ingestion → extraction → candidate → pack update
+- Universal pack requirements (structure, mandatory elements)
+- Templates for pack repositories
+- Process lint (correctness checks)
+- SoTA status rules
+- ID/reference requirements
+- Material ingestion → extraction → candidate → pack update protocol

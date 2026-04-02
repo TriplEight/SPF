@@ -1,83 +1,83 @@
 # CLAUDE.md — SPF (Second Principles Framework)
 
-> **Общие инструкции:** см. `/Users/tserentserenov/IWE/CLAUDE.md`
+> **General instructions:** see `/Users/tserentserenov/IWE/CLAUDE.md`
 >
-> Этот файл содержит только специфику данного репозитория.
+> This file contains only specifics of this repository.
 
 ---
 
-## 1. Тип репозитория
+## 1. Repository type
 
-**Framework** — фреймворк вторых принципов (форма + процесс для Pack'ов).
+**Framework** — second principles framework (form + process for Packs).
 
-**Source-of-truth:** Да (для спецификации SPF).
-
----
-
-## 2. Что такое SPF
-
-**SPF (Second Principles Framework)** задаёт:
-- **Форму** — каноническая структура Pack'а
-- **Процесс** — как создавать и эволюционировать Pack
-- **Контракты** — связь source-of-truth с downstream
-
-SPF **НЕ задаёт** предметное содержание — только форму и процесс.
+**Source-of-truth:** Yes (for the SPF specification).
 
 ---
 
-## 3. Иерархия
+## 2. What is SPF
+
+**SPF (Second Principles Framework)** defines:
+- **Form** — canonical Pack structure
+- **Process** — how to create and evolve a Pack
+- **Contracts** — link between source-of-truth and downstream
+
+SPF **does NOT define** domain content — only form and process.
+
+---
+
+## 3. Hierarchy
 
 ```
-FPF (Level 1)   →  First Principles Framework (мета-онтология)
+FPF (Level 1)   →  First Principles Framework (meta-ontology)
        ↓                   ↑ upstream
-SPF (Level 2)   →  ВЫ ЗДЕСЬ (форма + процесс)
+SPF (Level 2)   →  YOU ARE HERE (form + process)
        ↓                   ↓ downstream
-Pack            →  (downstream pack-репозитории)
+Pack            →  (downstream pack repositories)
 ```
 
 ---
 
-## 3.1. Работа с FPF
+## 3.1. Working with FPF
 
-**Локальный путь:** `~/IWE/FPF/FPF-Spec.md` (4.6 MB, ~50000 строк)
+**Local path:** `~/IWE/FPF/FPF-Spec.md` (4.6 MB, ~50000 lines)
 
-**Когда читать FPF при работе с SPF:**
-- При уточнении базовых различений (A.7: Role ≠ Method ≠ Work)
-- При работе с Bounded Context (A.1.1)
-- При проверке корректности процесса (B.4: Evolution Loop, B.5: Reasoning Cycle)
-- При работе с SoTA (FPF Part G: SoTA Kit)
-- При неясности терминологии (FPF Part F: UTS, Bridges)
+**When to read FPF while working with SPF:**
+- When clarifying base distinctions (A.7: Role ≠ Method ≠ Work)
+- When working with Bounded Context (A.1.1)
+- When verifying process correctness (B.4: Evolution Loop, B.5: Reasoning Cycle)
+- When working with SoTA (FPF Part G: SoTA Kit)
+- When terminology is unclear (FPF Part F: UTS, Bridges)
 
-**Как читать большой файл FPF:**
-1. НЕ читать целиком — файл слишком большой
-2. Сначала оглавление (первые 200 строк) — понять структуру
-3. Искать конкретные паттерны через Grep: `A.7`, `B.5`, `Part G`
-4. Читать только нужную секцию
+**How to read the large FPF file:**
+1. Do NOT read it in full — the file is too large
+2. First read the table of contents (first 200 lines) — understand the structure
+3. Search for specific patterns via Grep: `A.7`, `B.5`, `Part G`
+4. Read only the needed section
 
-**Структура FPF (для навигации):**
+**FPF structure (for navigation):**
 
-| Part | Содержание | Когда нужно |
-|------|------------|-------------|
-| **A** | Kernel: Holon, BoundedContext, Role-Method-Work | Базовые различения |
-| **B** | Aggregation (Γ), Trust (F-G-R), Evolution Loop | Процессы, доверие |
-| **C** | Domain extensions: Sys-CAL, KD-CAL, NQD-CAL | Расширения |
-| **D** | Ethics & Conflict | Этика |
-| **E** | Constitution & Authoring | Правила авторства |
-| **F** | Terminology: UTS, Bridges | Терминология |
-| **G** | SoTA Kit | Работа с SoTA |
+| Part | Content | When needed |
+|------|---------|-------------|
+| **A** | Kernel: Holon, BoundedContext, Role-Method-Work | Base distinctions |
+| **B** | Aggregation (Γ), Trust (F-G-R), Evolution Loop | Processes, trust |
+| **C** | Domain extensions: Sys-CAL, KD-CAL, NQD-CAL | Extensions |
+| **D** | Ethics & Conflict | Ethics |
+| **E** | Constitution & Authoring | Authoring rules |
+| **F** | Terminology: UTS, Bridges | Terminology |
+| **G** | SoTA Kit | Working with SoTA |
 
-**Обновление FPF:** `cd ~/IWE/FPF && git pull`
+**Updating FPF:** `cd ~/IWE/FPF && git pull`
 
 ---
 
-## 4. Структура репозитория
+## 4. Repository structure
 
 ```
 SPF/
-├── docs/               # Концептуальная документация
+├── docs/               # Conceptual documentation
 │   ├── conceptual-model.md
-│   └── fpf-spf-pack.md   # Полная концептуальная модель
-├── process/            # Процесс создания Pack
+│   └── fpf-spf-pack.md   # Full conceptual model
+├── process/            # Pack creation process
 │   ├── 00-process-overview.md
 │   ├── 01-domain-selection.md
 │   ├── 02-bounded-context.md
@@ -85,14 +85,14 @@ SPF/
 │   ├── ...
 │   ├── process-lint.md
 │   └── material-ingestion-protocol.md
-├── spec/               # Спецификации
+├── spec/               # Specifications
 │   ├── ai-view.md
 │   ├── downstream-contract.md
 │   ├── human-guides.md
 │   ├── SPF.SPEC.001-entity-coding.md
 │   ├── SPF.SPEC.003-pack-scalability.md
-│   └── SPF.SPEC.004-service-clauses.md  # SC vs UC различение
-└── pack-template/      # Шаблон структуры Pack
+│   └── SPF.SPEC.004-service-clauses.md  # SC vs UC distinction
+└── pack-template/      # Pack structure template
     ├── 00-pack-manifest.md
     ├── 01-domain-contract/
     ├── 02-domain-entities/
@@ -101,98 +101,98 @@ SPF/
     ├── 05-failure-modes/
     ├── 06-sota/
     ├── 07-map/
-    └── 08-service-clauses/  # Пользовательские обещания (SC)
+    └── 08-service-clauses/  # User-facing promises (SC)
 ```
 
 ---
 
-## 5. Hard Bans (запреты)
+## 5. Hard Bans
 
-### 5.1 Запрет дидактики
-**ЗАПРЕЩЕНО в SPF и Pack:** "step", "lesson", "in N days", "implement", "first/then", "exercise", "module", "week 1"
+### 5.1 Didactics ban
+**BANNED in SPF and Pack:** "step", "lesson", "in N days", "implement", "first/then", "exercise", "module", "week 1"
 
-**ПРИЧИНА:** Дидактика — downstream. Pack фиксирует **что существует**, а не **как учить**.
+**REASON:** Didactics is downstream. Pack captures **what exists**, not **how to teach**.
 
-### 5.2 Запрет предметного содержания в SPF
-**SPF задаёт форму**, не содержание. Содержание — в Pack'ах.
+### 5.2 Domain content ban in SPF
+**SPF defines form**, not content. Content belongs in Packs.
 
-### 5.3 Запрет путаницы типов сущностей (FPF A.7: Strict Distinction)
+### 5.3 Entity type confusion ban (FPF A.7: Strict Distinction)
 
-| ❌ Путаница | ✅ Различение | FPF код |
-|------------|--------------|---------|
-| Method = Tool | Метод — способ действия, инструмент — средство | A.3.1, A.3.2 |
-| Method = Scenario | Метод — что, сценарий — пошагово как | A.3.1 |
-| Work Product = Description | WP — артефакт, description — нарратив | A.7 |
-| System = Episteme | Система — физическая сущность, эпистема — область знания | A.1 |
-| Role = Actor | Роль — функция, актор — исполнитель | A.2 |
-| Object = Description = Carrier | Объект ≠ описание ≠ носитель | A.7 |
-
----
-
-## 6. Роль Claude в SPF
-
-### 6.1. Что Claude ДЕЛАЕТ
-
-| Роль | Описание |
-|------|----------|
-| **Spec Guardian** | Следит за соответствием спецификациям SPF |
-| **Process Guide** | Помогает следовать процессу создания Pack |
-| **Template Maintainer** | Поддерживает актуальность шаблонов |
-| **Lint Runner** | Проверяет корректность изменений |
-
-### 6.2. Что Claude НЕ ДЕЛАЕТ
-
-- ~~Domain Expert~~ — не определяет что истинно в предметной области
-- ~~Content Creator~~ — не генерирует знания из ничего
-- ~~Downstream Builder~~ — курсы/код это другие репо
+| ❌ Confusion | ✅ Distinction | FPF code |
+|-------------|---------------|----------|
+| Method = Tool | Method — way of acting, tool — means | A.3.1, A.3.2 |
+| Method = Scenario | Method — what, scenario — step-by-step how | A.3.1 |
+| Work Product = Description | WP — artifact, description — narrative | A.7 |
+| System = Episteme | System — physical entity, episteme — knowledge domain | A.1 |
+| Role = Actor | Role — function, actor — performer | A.2 |
+| Object = Description = Carrier | Object ≠ description ≠ carrier | A.7 |
 
 ---
 
-## 7. Ключевые документы
+## 6. Claude's role in SPF
 
-| Документ | Путь | Описание |
-|----------|------|----------|
-| Концептуальная модель (кратко) | `docs/conceptual-model.md` | FPF → SPF → Pack → Downstream |
-| Концептуальная модель (полная) | `docs/fpf-spf-pack.md` | Детальное описание всей архитектуры |
-| Process overview | `process/00-process-overview.md` | Обзор процесса |
-| Process lint | `process/process-lint.md` | Правила проверки |
-| Downstream contract | `spec/downstream-contract.md` | Контракт с downstream |
-| F-G-R Trust (опц.) | `spec/f-g-r-trust.md` | FPF B.3 — паттерн доверительности |
-| Pack template | `pack-template/` | Каноническая структура Pack |
+### 6.1. What Claude DOES
+
+| Role | Description |
+|------|-------------|
+| **Spec Guardian** | Ensures compliance with SPF specifications |
+| **Process Guide** | Helps follow the Pack creation process |
+| **Template Maintainer** | Keeps templates up to date |
+| **Lint Runner** | Checks correctness of changes |
+
+### 6.2. What Claude does NOT do
+
+- ~~Domain Expert~~ — does not determine what is true in a domain
+- ~~Content Creator~~ — does not generate knowledge from nothing
+- ~~Downstream Builder~~ — courses/code belong to other repos
 
 ---
 
-## 8. Процедуры
+## 7. Key documents
 
-### 8.1 Изменение спецификации SPF
+| Document | Path | Description |
+|----------|------|-------------|
+| Conceptual model (brief) | `docs/conceptual-model.md` | FPF → SPF → Pack → Downstream |
+| Conceptual model (full) | `docs/fpf-spf-pack.md` | Detailed description of the full architecture |
+| Process overview | `process/00-process-overview.md` | Process overview |
+| Process lint | `process/process-lint.md` | Validation rules |
+| Downstream contract | `spec/downstream-contract.md` | Contract with downstream |
+| F-G-R Trust (opt.) | `spec/f-g-r-trust.md` | FPF B.3 — trust pattern |
+| Pack template | `pack-template/` | Canonical Pack structure |
 
-1. Определи, какой spec затронут (`spec/`, `process/`, `pack-template/`)
-2. Проверь, не нарушит ли изменение существующие Pack'и
-3. Обнови спецификацию
-4. Обнови `process-lint.md` если нужно
-5. Уведоми downstream (Pack репозитории)
+---
 
-### 8.2 Изменение pack-template
+## 8. Procedures
 
-1. Изменения должны быть обратно-совместимы
-2. Если breaking change — требуется миграция Pack'ов
-3. Обнови `spec/SPF.SPEC.001-entity-coding.md` если затронуты ID
+### 8.1 Changing an SPF specification
+
+1. Identify which spec is affected (`spec/`, `process/`, `pack-template/`)
+2. Check whether the change will break existing Packs
+3. Update the specification
+4. Update `process-lint.md` if needed
+5. Notify downstream (Pack repositories)
+
+### 8.2 Changing pack-template
+
+1. Changes must be backwards-compatible
+2. If breaking change — Pack migration is required
+3. Update `spec/SPF.SPEC.001-entity-coding.md` if IDs are affected
 
 ---
 
 ## 9. Pre-Commit Checklist
 
-- [ ] Изменения не добавляют предметное содержание
-- [ ] Изменения не добавляют дидактику
-- [ ] Изменения обратно-совместимы (или задокументирован breaking change)
-- [ ] `process-lint.md` обновлён если нужно
-- [ ] Ссылки валидны
+- [ ] Changes do not add domain content
+- [ ] Changes do not add didactics
+- [ ] Changes are backwards-compatible (or breaking change is documented)
+- [ ] `process-lint.md` is updated if needed
+- [ ] References are valid
 
 ---
 
-## 10. Связи с другими репозиториями
+## 10. Relationships with other repositories
 
-| Репозиторий | Связь |
-|-------------|-------|
-| ailev/FPF | Upstream — SPF следует FPF |
-| Pack-репозитории | Downstream — Pack следует SPF |
+| Repository | Relationship |
+|------------|-------------|
+| ailev/FPF | Upstream — SPF follows FPF |
+| Pack repositories | Downstream — Pack follows SPF |

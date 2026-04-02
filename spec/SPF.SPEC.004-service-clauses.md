@@ -1,6 +1,6 @@
 ---
 id: SPF.SPEC.004
-name: Service Clause — пользовательские обещания домена
+name: Service Clause — domain's user-facing promises
 status: active
 created: 2026-03-30
 related:
@@ -10,179 +10,179 @@ related:
 
 # SPF.SPEC.004 — Service Clause vs Use Case
 
-## 1. Проблема
+## 1. Problem
 
-В практике Pack-разработки возникает путаница между двумя различными сущностями:
+In Pack development practice, confusion arises between two distinct entities:
 
-- **Что домен обещает** потребителю (независимо от реализации)
-- **Как** потребитель взаимодействует с системой для достижения цели
+- **What the domain promises** to the consumer (regardless of implementation)
+- **How** the consumer interacts with the system to achieve a goal
 
-Эта путаница приводит к смешению Pack-уровня (доменные обещания) и DS-уровня (сценарии взаимодействия) в одном файле или папке.
-
----
-
-## 2. Различение: Service Clause ≠ Use Case
-
-### Service Clause (SC) — пользовательское обещание
-
-| Атрибут | Значение |
-|---------|---------|
-| **Что это** | Контракт домена: кому, что, при каком условии гарантируется |
-| **Уровень** | Домен (Pack) — независимо от реализации |
-| **Вопрос** | «Что платформа/домен гарантирует?» |
-| **Изменяется когда** | Меняется доменное обещание (стратегическое решение) |
-| **Где живёт** | `08-service-clauses/` в Pack |
-| **Код** | `<КОНТЕКСТ>.SC.<NNN>` |
-
-**Формат:** «Если [актор] [условие] → домен обеспечивает [гарантию]»
-
-**Пример:** `DP.SC.001` — «Если пользователь открывает рабочий день → платформа предоставляет контекст дня (коммиты, задачи, календарь)»
-
-### Use Case (UC) — сценарий взаимодействия
-
-| Атрибут | Значение |
-|---------|---------|
-| **Что это** | Описание последовательности взаимодействий актора с системой |
-| **Уровень** | Система (DS) — зависит от реализации |
-| **Вопрос** | «Как именно достигается цель в конкретной системе?» |
-| **Изменяется когда** | Меняется интерфейс или реализация |
-| **Где живёт** | `08-use-cases/` в DS-репозитории |
-| **Код** | `<СИСТЕМА>.UC.<NNN>` (не в Pack) |
-
-**Формат:** Основной поток, альтернативные потоки, preconditions, postconditions
+This confusion leads to mixing the Pack level (domain promises) and DS level (interaction scenarios) in a single file or folder.
 
 ---
 
-## 3. Теоретическое основание
+## 2. Distinction: Service Clause ≠ Use Case
+
+### Service Clause (SC) — user-facing promise
+
+| Attribute | Value |
+|-----------|-------|
+| **What it is** | Domain contract: to whom, what, under what condition is guaranteed |
+| **Level** | Domain (Pack) — implementation-independent |
+| **Question** | "What does the platform/domain guarantee?" |
+| **Changes when** | The domain promise changes (strategic decision) |
+| **Where it lives** | `08-service-clauses/` in Pack |
+| **Code** | `<CONTEXT>.SC.<NNN>` |
+
+**Format:** "If [actor] [condition] → the domain ensures [guarantee]"
+
+**Example:** `DP.SC.001` — "If a user opens a working day → the platform provides day context (commits, tasks, calendar)"
+
+### Use Case (UC) — interaction scenario
+
+| Attribute | Value |
+|-----------|-------|
+| **What it is** | Description of the sequence of interactions between an actor and a system |
+| **Level** | System (DS) — implementation-dependent |
+| **Question** | "How exactly is the goal achieved in a specific system?" |
+| **Changes when** | The interface or implementation changes |
+| **Where it lives** | `08-use-cases/` in DS repository |
+| **Code** | `<SYSTEM>.UC.<NNN>` (not in Pack) |
+
+**Format:** Main flow, alternative flows, preconditions, postconditions
+
+---
+
+## 3. Theoretical basis
 
 ### DDD Strategic (DP.SOTA.001): Published Language
 
-В стратегическом DDD (Khononov, Evans) **Published Language** — это интерфейс Bounded Context для внешних потребителей: что BC гарантирует независимо от внутреннего устройства. Service Clause — это реализация Published Language на уровне Pack.
+In strategic DDD (Khononov, Evans) **Published Language** is the Bounded Context interface for external consumers: what the BC guarantees regardless of internal design. Service Clause is an implementation of Published Language at the Pack level.
 
-Use Cases — это **Application Services** внутри BC: конкретные сценарии исполнения, зависящие от технологий и реализации. Они принадлежат DS, не Pack.
+Use Cases are **Application Services** within a BC: specific execution scenarios dependent on technologies and implementation. They belong to DS, not Pack.
 
 ### FPF A.7: Strict Distinction (Method ≠ Scenario)
 
-FPF A.7 требует разделять:
-- **Метод** (capability, что можно производить) — уровень описания домена
-- **Сценарий** (пошаговое как) — уровень реализации
+FPF A.7 requires separating:
+- **Method** (capability, what can be produced) — domain description level
+- **Scenario** (step-by-step how) — implementation level
 
-По той же логике:
-- **Обещание** (что гарантируется) — уровень Pack
-- **Сценарий взаимодействия** (как достигается шагами) — уровень DS
+By the same logic:
+- **Promise** (what is guaranteed) — Pack level
+- **Interaction scenario** (how it is achieved step by step) — DS level
 
-### Service Design / SLA-паттерн
+### Service Design / SLA pattern
 
-В Service Design (Stickdorn, Schneider) различают:
-- **Service Promise** — что сервис обязуется обеспечить (независимо от канала)
-- **Service Blueprint** — как именно сервис исполняется в конкретном канале
+In Service Design (Stickdorn, Schneider) they distinguish:
+- **Service Promise** — what the service commits to ensure (channel-independent)
+- **Service Blueprint** — how exactly the service is delivered in a specific channel
 
-Service Clause = Service Promise. Use Case = часть Service Blueprint.
+Service Clause = Service Promise. Use Case = part of Service Blueprint.
 
 ---
 
-## 4. Правила применения
+## 4. Application rules
 
-### 4.1 Где размещать
+### 4.1 Where to place
 
-| Сущность | Уровень | Папка | Пример |
-|----------|---------|-------|--------|
+| Entity | Level | Folder | Example |
+|--------|-------|--------|---------|
 | Service Clause | Pack | `08-service-clauses/` | `DP.SC.001-daily-planning.md` |
-| Use Case | DS | `08-use-cases/` (в DS-репо) | `SystemName.UC.001-open-day.md` |
+| Use Case | DS | `08-use-cases/` (in DS repo) | `SystemName.UC.001-open-day.md` |
 
-### 4.2 Как отличить SC от UC
+### 4.2 How to distinguish SC from UC
 
-**Тест 1 — Вопрос реализации:**
-> «Если реализация изменится (другой интерфейс, другой язык, другой фреймворк), изменится ли этот файл?»
-- Нет → это SC (Pack)
-- Да → это UC (DS)
+**Test 1 — Implementation question:**
+> "If the implementation changes (different interface, different language, different framework), will this file change?"
+- No → this is an SC (Pack)
+- Yes → this is a UC (DS)
 
-**Тест 2 — Гарантия vs шаги:**
-> Файл описывает обещание (что гарантируется) или шаги (как взаимодействовать)?
-- Обещание → SC
-- Шаги → UC
+**Test 2 — Guarantee vs steps:**
+> Does the file describe a promise (what is guaranteed) or steps (how to interact)?
+- Promise → SC
+- Steps → UC
 
-**Тест 3 — Актор-условие-гарантия:**
-> Можно ли сформулировать как «Если [актор] [условие] → домен гарантирует [результат]»?
-- Да → SC
-- Нет (нужно описывать шаги) → UC
+**Test 3 — Actor-condition-guarantee:**
+> Can it be formulated as "If [actor] [condition] → the domain guarantees [result]"?
+- Yes → SC
+- No (steps need to be described) → UC
 
-### 4.3 Смешанный формат (допустимое исключение)
+### 4.3 Mixed format (permissible exception)
 
-Операционные Pack (напр. PACK-verification) могут содержать SC с кратким описанием протокола исполнения. Это допустимо если:
-- Протокол — неотъемлемая часть обещания (нельзя понять SC без него)
-- Протокол не зависит от конкретной реализации системы
+Operational Packs (e.g. PACK-verification) may contain SCs with a brief execution protocol. This is permissible if:
+- The protocol is an integral part of the promise (the SC cannot be understood without it)
+- The protocol does not depend on a specific system implementation
 
-Признак нарушения: протокол описывает конкретные UI-шаги, API-вызовы или технические детали → вынести в DS.
+Sign of violation: the protocol describes specific UI steps, API calls, or technical details → move to DS.
 
 ---
 
-## 5. Структура SC-карточки (канонический формат)
+## 5. SC card structure (canonical format)
 
 ```markdown
 ---
-id: <КОНТЕКСТ>.SC.<NNN>
-name: <Краткое название обещания>
+id: <CONTEXT>.SC.<NNN>
+name: <Short promise name>
 kind: SC
 status: active | draft | deprecated
 layer: L4-Personal | L2-Platform | L3-Template
-actor: <кто получает обещание>
-condition: <при каком условии>
-guarantee: <что гарантируется>
+actor: <who receives the promise>
+condition: <under what condition>
+guarantee: <what is guaranteed>
 created: YYYY-MM-DD
 related:
-  extends: []      # SC более высокого уровня
-  depends_on: []   # другие SC, без которых это не работает
+  extends: []      # Higher-level SC
+  depends_on: []   # Other SCs without which this doesn't work
 ---
 
-# <КОНТЕКСТ>.SC.<NNN> — <Название>
+# <CONTEXT>.SC.<NNN> — <Name>
 
-## Обещание
+## Promise
 
-<Одно предложение: актор + условие + гарантия>
+<One sentence: actor + condition + guarantee>
 
-## Триггер
+## Trigger
 
-- <условие 1>
-- <условие 2>
+- <condition 1>
+- <condition 2>
 
-## Гарантия
+## Guarantee
 
-<Что домен обязуется обеспечить. Без шагов реализации.>
+<What the domain commits to ensure. No implementation steps.>
 
-## Участники (опционально для операционных Pack)
+## Participants (optional for operational Packs)
 
-| Роль | Кто |
+| Role | Who |
 
-## Исключения
+## Exceptions
 
-<При каких условиях обещание не действует>
+<Under what conditions the promise does not apply>
 ```
 
 ---
 
-## 6. Код вида SC в SPF.SPEC.001
+## 6. SC kind code in SPF.SPEC.001
 
-Service Clause (`SC`) добавляется в таблицу базовых видов:
+Service Clause (`SC`) is added to the base kinds table:
 
-| Код | Вид | Папка в Pack |
-|-----|-----|-------------|
+| Code | Kind | Pack folder |
+|------|------|-------------|
 | `SC` | Service Clause | `08-service-clauses/` |
 
 ---
 
-## 7. Миграция существующих Pack
+## 7. Migration of existing Packs
 
-Pack с папкой `08-use-cases/` содержащей файлы `*.SC.*`:
-1. Переименовать папку: `08-use-cases/` → `08-service-clauses/`
-2. Обновить CLAUDE.md репо
-3. Обновить все ссылки
+Packs with an `08-use-cases/` folder containing `*.SC.*` files:
+1. Rename the folder: `08-use-cases/` → `08-service-clauses/`
+2. Update the repo's CLAUDE.md
+3. Update all references
 
-Pack с папкой `08-use-cases/` содержащей файлы `*.UC.*` (настоящие Use Cases):
-- Оценить по тестам §4.2
-- Если это действительно UC → оставить имя файла, переместить в DS
-- Если это SC, названный UC → переименовать файлы в `*.SC.*` + переименовать папку
+Packs with an `08-use-cases/` folder containing `*.UC.*` files (actual Use Cases):
+- Evaluate using tests from §4.2
+- If it truly is a UC → keep the filename, move to DS
+- If it is an SC named as UC → rename files to `*.SC.*` + rename folder
 
 ---
 
-*Этот документ: `SPF.SPEC.004`*
+*This document: `SPF.SPEC.004`*

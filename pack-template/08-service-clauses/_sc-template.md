@@ -1,33 +1,33 @@
 ---
-id: <КОНТЕКСТ>.SC.<NNN>
-name: <Краткое название обещания>
+id: <CONTEXT>.SC.<NNN>
+name: <Short promise name>
 kind: SC
 status: draft
 layer: L4-Personal | L2-Platform | L3-Template
-actor: <кто получает обещание>
-condition: <при каком условии>
-guarantee: <что гарантируется>
+actor: <who receives the promise>
+condition: <under what condition>
+guarantee: <what is guaranteed>
 created: YYYY-MM-DD
 related:
   extends: []
   depends_on: []
 ---
 
-# <КОНТЕКСТ>.SC.<NNN> — <Название>
+# <CONTEXT>.SC.<NNN> — <Name>
 
-## Обещание
+## Promise
 
-> Если [актор] [условие] → домен обеспечивает [гарантию].
+> If [actor] [condition] → the domain ensures [guarantee].
 
-## Триггер
+## Trigger
 
-- <условие 1>
-- <условие 2>
+- <condition 1>
+- <condition 2>
 
-## Гарантия
+## Guarantee
 
-<Что домен обязуется обеспечить. Без шагов реализации. Независимо от технологий.>
+<What the domain commits to ensure. No implementation steps. Technology-independent.>
 
-## Исключения
+## Exceptions
 
-<При каких условиях обещание не действует>
+<Under what conditions the promise does not apply>
