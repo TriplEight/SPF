@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# pack-lint (WP-242) — должен идти до exit 0 auto-MAP
+bash "/Users/tserentserenov/IWE/DS-MCP/knowledge-mcp/scripts/pack-lint.sh"
 #
 # Pre-commit hook: auto-regenerate MAP when Pack entities change.
 #
