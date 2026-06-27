@@ -39,7 +39,7 @@ Pack            →  (downstream pack repositories)
 
 ## 3.1. Working with FPF
 
-**Local path:** `~/IWE/FPF/FPF-Spec.md` (4.6 MB, ~50000 lines)
+**Local path:** `../FPF/FPF-Spec.md` (4.6 MB, ~50000 lines)
 
 **When to read FPF while working with SPF:**
 - When clarifying base distinctions (A.7: Role ≠ Method ≠ Work)
@@ -66,7 +66,7 @@ Pack            →  (downstream pack repositories)
 | **F** | Terminology: UTS, Bridges | Terminology |
 | **G** | SoTA Kit | Working with SoTA |
 
-**Updating FPF:** `cd ~/IWE/FPF && git pull`
+**Updating FPF:** `cd $IWE_WORKSPACE/FPF && git pull`
 
 ---
 
